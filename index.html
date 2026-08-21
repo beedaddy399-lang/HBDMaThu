@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Happy Birthday!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(145deg, #0b0e1a 0%, #1a1f2f 100%);
+            font-family: 'Segoe UI', 'Poppins', system-ui, sans-serif;
+            padding: 1.5rem;
+        }
+
+        .card {
+            max-width: 750px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-radius: 3.5rem;
+            padding: 2.8rem 2.2rem;
+            box-shadow: 0 40px 70px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 215, 0, 0.15);
+            text-align: center;
+            transition: 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .card:hover {
+            transform: scale(1.01);
+            box-shadow: 0 50px 85px rgba(0, 0, 0, 0.8), 0 0 0 2px rgba(255, 215, 0, 0.3);
+        }
+
+        .cake-icon {
+            font-size: 5.5rem;
+            color: #facc15;
+            filter: drop-shadow(0 8px 20px rgba(250, 204, 21, 0.4));
+            margin-bottom: 0.25rem;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fde047, #facc15, #f59e0b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
+            margin: 0.2rem 0 0.3rem 0;
+            text-shadow: 0 0 30px rgba(250, 204, 21, 0.25);
+            word-break: break-word;
+        }
+
+        .sub-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #e2e8f0;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .divider {
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #facc15, transparent);
+            margin: 1rem auto 1.8rem auto;
+            border-radius: 10px;
+        }
+
+        .message {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.8rem 1.5rem;
+            border-radius: 2.5rem;
+            border-left: 4px solid #facc15;
+            border-right: 4px solid #facc15;
+            margin-bottom: 2.2rem;
+            font-weight: 300;
+            backdrop-filter: blur(4px);
+        }
+
+        .message i {
+            color: #facc15;
+            margin: 0 4px;
+        }
+
+        .detail-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.8rem 2.5rem;
+            margin: 2rem 0 2.2rem 0;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            color: #e2e8f0;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 0.6rem 1.3rem;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            backdrop-filter: blur(4px);
+        }
+
+        .detail-item i {
+            color: #facc15;
+            font-size: 1.4rem;
+            width: 1.8rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #facc15, #f59e0b);
+            color: #0b0e1a;
+            font-weight: 700;
+            font-size: 1.3rem;
+            padding: 1rem 2.8rem;
+            border-radius: 60px;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: 0.25s ease;
+            box-shadow: 0 10px 25px -8px rgba(250, 204, 21, 0.4);
+            border: none;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+
+        .btn i {
+            margin-right: 12px;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: linear-gradient(135deg, #fde047, #facc15);
+            box-shadow: 0 20px 40px -10px #facc15aa;
+            color: #000;
+        }
+
+        .btn:active {
+            transform: scale(0.96);
+        }
+
+        .footer-note {
+            margin-top: 2.2rem;
+            color: #64748b;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+            padding-top: 1.8rem;
+        }
+
+        .footer-note i {
+            color: #ef4444;
+            animation: pulse 1.5s infinite;
+        }
+
+        .sparkle {
+            display: inline-block;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1.1); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.25); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 550px) {
+            .card { padding: 2rem 1.2rem; border-radius: 2.5rem; }
+            h1 { font-size: 2.8rem; }
+            .sub-title { font-size: 1.2rem; }
+            .message { font-size: 1rem; padding: 1.2rem; }
+            .detail-item { font-size: 0.95rem; padding: 0.4rem 1rem; }
+            .btn { font-size: 1.1rem; padding: 0.8rem 2rem; }
+            .cake-icon { font-size: 4rem; }
+        }
+
+        @media (max-width: 400px) {
+            h1 { font-size: 2.2rem; }
+            .detail-grid { gap: 0.8rem; }
+            .detail-item { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="cake-icon">
+            <i class="fas fa-birthday-cake"></i>
+        </div>
+
+        <h1>Happy Birthday!</h1>
+        <div class="sub-title">
+            <i class="fas fa-star sparkle" style="color:#facc15;"></i>
+            Celebrate Your Day
+            <i class="fas fa-star sparkle" style="color:#facc15;"></i>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="message">
+            <i class="fas fa-quote-left"></i>
+            Today is all about you.<br />
+            May your day be filled with joy, laughter, and love.<br />
+            May all your dreams come true.
+            <i class="fas fa-quote-right"></i>
+        </div>
+
+        <div class="detail-grid">
+            <span class="detail-item">
+                <i class="fas fa-gift"></i> Gift
+            </span>
+            <span class="detail-item">
+                <i class="fas fa-music"></i> Music
+            </span>
+            <span class="detail-item">
+                <i class="fas fa-ballon"></i> Balloon
+            </span>
+            <span class="detail-item">
+                <i class="fas fa-cake"></i> Cake
+            </span>
+        </div>
+
+        <a href="#" class="btn" id="celebrateBtn">
+            <i class="fas fa-party-horn"></i> Celebrate
+        </a>
+
+        <div class="footer-note">
+            <i class="fas fa-heart"></i>
+            Made with love
+            <i class="fas fa-heart"></i>
+            <br />
+            <span style="font-size:0.8rem; opacity:0.6;">
+                <i class="far fa-calendar-alt"></i> 2026 · Birthday Special
+            </span>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const btn = document.getElementById('celebrateBtn');
+
+            function celebrate() {
+                alert('🎂 Happy Birthday! Wishing you the best day ever! 🎉');
+
+                const emojis = ['🎉', '🎊', '✨', '🎈', '🎁', '🥳', '🎂', '💫'];
+                const container = document.body;
+
+                for (let i = 0; i < 35; i++) {
+                    const span = document.createElement('span');
+                    span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    span.style.position = 'fixed';
+                    span.style.fontSize = (Math.random() * 2 + 1.5) + 'rem';
+                    span.style.left = Math.random() * 100 + 'vw';
+                    span.style.top = '-10%';
+                    span.style.pointerEvents = 'none';
+                    span.style.zIndex = '9999';
+                    span.style.transition = 'all 4s cubic-bezier(0.2, 0.8, 0.3, 1)';
+                    span.style.opacity = '0.9';
+                    span.style.filter = 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))';
+                    container.appendChild(span);
+
+                    const driftX = (Math.random() - 0.5) * 40;
+                    const driftY = (Math.random() * 70 + 50);
+
+                    requestAnimationFrame(() => {
+                        span.style.transform = `translate(${driftX}vw, ${driftY}vh) rotate(${Math.random() * 360}deg)`;
+                        span.style.opacity = '0.2';
+                    });
+
+                    setTimeout(() => {
+                        if (span.parentNode) span.remove();
+                    }, 4500);
+                }
+
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check-circle"></i> Celebrated!';
+                btn.style.background = 'linear-gradient(135deg, #34d399, #10b981)';
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                }, 2500);
+            }
+
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                celebrate();
+            });
+
+            btn.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    celebrate();
+                }
+            });
+
+            console.log('🎂 Happy Birthday! 🎂');
+        })();
+    </script>
+</body>
+</html>
