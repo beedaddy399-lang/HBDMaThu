@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Happy Birthday</title>
+    <title>💌 Happy Birthday Sofia</title>
     <style>
         * {
             margin: 0;
@@ -16,146 +16,181 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #0f0e17;
-            font-family: 'Arial', 'Segoe UI', sans-serif;
+            background: #1a1410;
+            font-family: 'Georgia', 'Times New Roman', serif;
             padding: 20px;
         }
 
         .container {
-            max-width: 500px;
+            max-width: 480px;
             width: 100%;
-            background: #fffffe;
-            border-radius: 40px;
+            background: #fdf6ee;
+            border-radius: 32px;
             padding: 35px 25px 30px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.7);
             text-align: center;
+            position: relative;
         }
 
-        /* === IMAGE SPOT === */
-        .photo {
-            width: 100%;
-            height: 220px;
-            background: #eaddcf;
-            border-radius: 24px;
-            margin-bottom: 20px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .photo-placeholder {
-            color: #0f0e17;
-            font-size: 0.9rem;
-            opacity: 0.5;
-        }
-
-        /* === TEXT === */
-        h1 {
-            font-size: 3.2rem;
-            font-weight: 900;
-            color: #0f0e17;
-            letter-spacing: -1px;
-            margin-bottom: 4px;
-        }
-
-        .sub {
-            font-size: 1rem;
-            color: #ff8906;
-            font-weight: 600;
-            letter-spacing: 4px;
+        /* === HEADER === */
+        .pov-tag {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            color: #b8957a;
             text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 400;
+            color: #3d2a1e;
+            letter-spacing: 1px;
             margin-bottom: 16px;
         }
 
-        .message {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #2d2a3b;
-            background: #f9f4f0;
-            padding: 18px 16px;
-            border-radius: 20px;
-            margin-bottom: 22px;
-        }
-
-        /* === ICON ROW === */
-        .icons {
+        /* === ENVELOPE / LETTER CARD === */
+        .envelope {
+            background: #f5ebe1;
+            border-radius: 24px;
+            padding: 30px 22px;
+            border: 2px dashed #d4b8a5;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 180px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
-            gap: 18px;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
+            align-items: center;
+            position: relative;
+            box-shadow: inset 0 0 30px rgba(180, 140, 110, 0.08);
         }
 
-        .icons span {
+        .envelope:hover {
+            border-color: #b8957a;
+            background: #f7efe7;
+            transform: scale(1.01);
+        }
+
+        .envelope .closed-text {
+            font-size: 1.1rem;
+            color: #7a5f4b;
+            font-style: italic;
+        }
+
+        .envelope .closed-icon {
+            font-size: 3rem;
+            margin-bottom: 8px;
+        }
+
+        .envelope .click-hint {
+            font-size: 0.8rem;
+            color: #b8957a;
+            margin-top: 10px;
+            letter-spacing: 1px;
+            border-top: 1px solid #e0cebe;
+            padding-top: 12px;
+            width: 80%;
+        }
+
+        /* === LETTER CONTENT (hidden by default) === */
+        .letter-content {
+            display: none;
+            text-align: left;
+            width: 100%;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .letter-content.open {
+            display: block;
+        }
+
+        .letter-content .greeting {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #3d2a1e;
+            margin-bottom: 4px;
+        }
+
+        .letter-content .name {
             font-size: 1.8rem;
+            font-weight: 700;
+            color: #b76e4a;
+            margin-bottom: 12px;
         }
 
-        /* === BUTTON === */
-        .btn {
+        .letter-content .body-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #3d2a1e;
+            margin-bottom: 14px;
+        }
+
+        .letter-content .signature {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #7a5f4b;
+            text-align: right;
+            border-top: 1px solid #e0cebe;
+            padding-top: 14px;
+            margin-top: 6px;
+        }
+
+        .letter-content .back-btn {
             display: inline-block;
-            background: #ff8906;
-            color: #fffffe;
-            font-weight: 700;
-            font-size: 1.2rem;
-            padding: 14px 40px;
-            border-radius: 60px;
-            text-decoration: none;
-            border: none;
+            margin-top: 18px;
+            background: transparent;
+            border: 1.5px solid #b8957a;
+            color: #7a5f4b;
+            padding: 8px 28px;
+            border-radius: 40px;
+            font-family: inherit;
+            font-size: 0.85rem;
             cursor: pointer;
             transition: 0.2s;
-            box-shadow: 0 8px 20px rgba(255, 137, 6, 0.35);
-        }
-
-        .btn:hover {
-            background: #e67a00;
-            transform: scale(1.03);
-        }
-
-        .btn:active {
-            transform: scale(0.95);
-        }
-
-        /* === SECOND IMAGE (small) === */
-        .photo-small {
-            width: 100%;
-            height: 100px;
-            background: #eaddcf;
-            border-radius: 18px;
-            margin-top: 22px;
-            overflow: hidden;
-        }
-
-        .photo-small img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* === FOOTER === */
-        .footer {
-            margin-top: 18px;
-            font-size: 0.75rem;
-            color: #a7a9be;
             letter-spacing: 1px;
         }
 
-        .footer i {
-            color: #ff8906;
+        .letter-content .back-btn:hover {
+            background: #b8957a;
+            color: #fdf6ee;
         }
 
-        /* responsive */
+        /* === FOOTER INFO (like in your reference) === */
+        .meta-footer {
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 1px solid #e8ddd0;
+            font-size: 0.7rem;
+            color: #b8957a;
+            letter-spacing: 1px;
+            line-height: 1.7;
+        }
+
+        .meta-footer .highlight {
+            color: #b76e4a;
+            font-weight: 600;
+        }
+
+        .meta-footer .small-icons {
+            font-size: 1rem;
+            margin: 0 4px;
+        }
+
+        /* === ANIMATION === */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* === RESPONSIVE === */
         @media (max-width: 450px) {
-            .container { padding: 20px 16px; }
-            h1 { font-size: 2.5rem; }
-            .photo { height: 170px; }
-            .photo-small { height: 80px; }
+            .container { padding: 24px 16px; }
+            h1 { font-size: 1.6rem; }
+            .envelope { padding: 22px 16px; min-height: 150px; }
+            .letter-content .name { font-size: 1.5rem; }
+            .letter-content .body-text { font-size: 0.95rem; }
         }
     </style>
 </head>
@@ -163,77 +198,78 @@
 
 <div class="container">
 
-    <!-- === MAIN IMAGE === -->
-    <div class="photo">
-        <!-- Replace src with your image URL -->
-        <img 
-            src="https://images.unsplash.com/photo-1558637845-e94c4a1ea0f5?w=600&h=400&fit=crop&crop=center" 
-            alt="Birthday"
-        />
-    </div>
+    <!-- POV TAG -->
+    <div class="pov-tag">✦ POV: this is your love language ✦</div>
 
     <!-- TITLE -->
-    <h1>Happy Birthday!</h1>
-    <div class="sub">— celebrate —</div>
+    <h1>💌 Dear Sofia</h1>
 
-    <!-- MESSAGE -->
-    <div class="message">
-        Wishing you a day filled with love, laughter, and everything you deserve. 🎈
+    <!-- ===== ENVELOPE / LETTER ===== -->
+    <div class="envelope" id="envelope">
+
+        <!-- CLOSED STATE -->
+        <div id="closedState">
+            <div class="closed-icon">✉️</div>
+            <div class="closed-text">Happy Birthday!</div>
+            <div class="click-hint">⌄ click on the letter to read it! ⌄</div>
+        </div>
+
+        <!-- OPEN STATE (letter) -->
+        <div class="letter-content" id="letterContent">
+            <div class="greeting">Dear</div>
+            <div class="name">Sofia,</div>
+            <div class="body-text">
+                Happy Birthday!<br /><br />
+                I hope you have an amazing day filled with lots of happiness, laughter and good memories.<br /><br />
+                Wishing you good health, success in everything you do and many more birthdays to celebrate. Enjoy your special day — you deserve it!
+            </div>
+            <div class="signature">— Jake</div>
+            <button class="back-btn" id="backBtn">← back</button>
+        </div>
     </div>
 
-    <!-- ICONS -->
-    <div class="icons">
-        <span>🎂</span>
-        <span>🎁</span>
-        <span>🎈</span>
-        <span>🥳</span>
-        <span>✨</span>
+    <!-- ===== META FOOTER (like your reference) ===== -->
+    <div class="meta-footer">
+        <span class="highlight">GRACE | OPEN FOR COMMISSIONS</span><br />
+        POV: This is your love language ❤️ L!nk on bio ✨ #canva #canvawebsi... more<br />
+        <span class="small-icons">📖</span> Contains: Hopelessly Dev...<br />
+        <span style="opacity:0.5;">Search · free digital love letter website</span>
     </div>
 
-    <!-- BUTTON -->
-    <button class="btn" id="celebrateBtn">🎉 Celebrate</button>
-
-    <!-- === SMALL SECOND IMAGE === -->
-    <div class="photo-small">
-        <!-- Replace src with your image URL -->
-        <img 
-            src="https://images.unsplash.com/photo-1558637845-e94c4a1ea0f5?w=600&h=200&fit=crop&crop=center" 
-            alt="Celebration"
-        />
-    </div>
-
-    <!-- FOOTER -->
-    <div class="footer">
-        <span>❤️ made with love · 2026</span>
-    </div>
 </div>
 
 <script>
-    document.getElementById('celebrateBtn').addEventListener('click', function() {
-        alert('🎂 Happy Birthday! Wishing you the best! 🎉');
+    const envelope = document.getElementById('envelope');
+    const closedState = document.getElementById('closedState');
+    const letterContent = document.getElementById('letterContent');
+    const backBtn = document.getElementById('backBtn');
+
+    // OPEN letter on click
+    envelope.addEventListener('click', function(e) {
+        // if back button was clicked, don't trigger again
+        if (e.target === backBtn) return;
         
-        // mini confetti
-        const emojis = ['🎉','🎊','✨','🎈','🥳','🎁'];
-        for (let i = 0; i < 30; i++) {
-            const el = document.createElement('span');
-            el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-            el.style.position = 'fixed';
-            el.style.fontSize = (Math.random() * 2 + 1.2) + 'rem';
-            el.style.left = Math.random() * 100 + 'vw';
-            el.style.top = '-20px';
-            el.style.pointerEvents = 'none';
-            el.style.zIndex = '9999';
-            el.style.transition = 'all 3.5s ease-out';
-            document.body.appendChild(el);
-            
-            requestAnimationFrame(() => {
-                el.style.transform = `translateY(${80 + Math.random() * 50}vh) rotate(${Math.random() * 360}deg)`;
-                el.style.opacity = '0';
-            });
-            
-            setTimeout(() => el.remove(), 4000);
-        }
+        closedState.style.display = 'none';
+        letterContent.classList.add('open');
     });
+
+    // CLOSE letter via back button
+    backBtn.addEventListener('click', function(e) {
+        e.stopPropagation(); // prevent envelope click
+        letterContent.classList.remove('open');
+        closedState.style.display = 'flex';
+        closedState.style.flexDirection = 'column';
+        closedState.style.alignItems = 'center';
+        closedState.style.justifyContent = 'center';
+        closedState.style.width = '100%';
+    });
+
+    // ensure closed state displays as flex column
+    closedState.style.display = 'flex';
+    closedState.style.flexDirection = 'column';
+    closedState.style.alignItems = 'center';
+    closedState.style.justifyContent = 'center';
+    closedState.style.width = '100%';
 </script>
 
 </body>
